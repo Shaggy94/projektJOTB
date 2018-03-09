@@ -3,7 +3,10 @@ ob_start();
 session_start();
 
 include 'connection.php';
-
+if(!empty($_SESSION)){
+    session_unset();
+    header("Location: index.php");
+}else
 if (isset($_POST['login']) && isset($_POST['haslo'])) {
     $log=$pdo->prepare('SELECT*FROM danelogowania WHERE login= :log');
     try {

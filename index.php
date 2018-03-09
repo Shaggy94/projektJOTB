@@ -9,9 +9,13 @@
 
     </head>
     <body>
+        <div class="container-fluid">
+            <?php
+            session_start();
+            include './connection.php';
+            include './navbar.php';
+            ?>
+        </div>
 
-        <a href="admin/payments/payments.php">płatności</a><br>
-        <a href="admin/providers/providers.php">dostawcy</a><br>
-        <a href="logowanie.php">Zaloguj</a>
     </body>
 </html>
