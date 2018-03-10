@@ -44,8 +44,7 @@ if ($idGet > 0) {
         echo '<input type="hidden" name="id" value="' . $idGet . '">';
     }
     ?>
-
-    Nrumer Sprzedawcy: <input type="text" name="nrs" <?php
+    Nrumer Dostawcy: <input type="text" name="nrs" <?php
     if (isset($result['NrDostawcy'])) {
         echo 'value="' . $result['NrDostawcy'] . '"';
     }
