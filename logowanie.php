@@ -7,6 +7,7 @@ if(!empty($_SESSION)){
     session_unset();
     header("Location: index.php");
 }else
+    echo $_POST['login']."   ".$_POST['haslo'];
 if (isset($_POST['login']) && isset($_POST['haslo'])) {
     $log=$pdo->prepare('SELECT*FROM danelogowania WHERE login= :log');
     try {
@@ -16,6 +17,7 @@ if (isset($_POST['login']) && isset($_POST['haslo'])) {
             $dane=$log->fetch(PDO::FETCH_ASSOC);
             if($dane['Haslo']===md5($_POST['haslo'])){
                 $_SESSION['id']=$dane['ID'];
+                $_SESSION['login']=$_POST['login'];
                 header("Location: index.php");
             }else echo "Hasło niepoprawne";
         }else echo "Nie ma takiego uzytkownika";

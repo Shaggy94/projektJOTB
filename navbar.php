@@ -17,43 +17,45 @@
                 <?php
                 if (isset($_SESSION['id'])) {
                     $session = 1;
-                    echo '<li><a href="#"><span class="glyphicon glyphicon-user"></span> Witaj</a></li>';
+                    echo '<li><a href="#"><span class="glyphicon glyphicon-user"></span> '.$_SESSION['login'].'</a></li>';
                 } else {
                     $session = 0;
                     echo '<li><a href="#"><span class="glyphicon glyphicon-user"></span> Zarejestruj się</a></li>';
                 }
                 ?>
-                <li><a href="#" id="link"><span class="glyphicon glyphicon-log-in"></span>
-                        <?php
-                        if (isset($_SESSION['id'])) {
-                            echo " Wyloguj się";
-                        } else {
-                            echo " Zaloguj się";
-                        }
-                        ?>
-                    </a></li>
+                <li><a href="#" id="login" data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-log-in"></span> Zaloguj</a>
+                    <a href="wyloguj.php" id='logout' style="display: none;"><span class="glyphicon glyphicon-log-out"></span> Wyloguj</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
-<div id="pokaz" style="display: none; z-index: 1; position: ">
-    <form method="POST" action="logowanie.php">
-        Login: <input name="login" type="text" /><br>
-        Hasło: <input name="haslo" type="password"/><br>
-        <input type="submit" value="OK"/>
-    </form>
-</div>
-<script>
-    $ses =<?php echo $session; ?>;
-    $(document).ready(function () {
-        $("#link").click(function () {
-            if ($ses === 0)
-                $("#pokaz").toggle();
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="loginmodal-container">
+                <h1>Login to Your Account</h1><br>
+                <form method="POST" action="logowanie.php">
+                    <input type="text" name="login" placeholder="Login">
+                    <input type="password" name="haslo" placeholder="Hasło">
+                    <input type="submit" class="login loginmodal-submit" value="Zaloguj">
+                </form>
+                <div class="login-help">
+                    <a href="#">Utwórz nowe konto</a> - <a href="#">Przypomnij hasło</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $ses =<?php echo $session; ?>;
+        $(document).ready(function () {
+            if ($ses !== 0) {
+                $('#login').hide();
+                $('#logout').show();
+            }
             else
             {
-                $("#pokaz").load('wyloguj.php');
-                location.reload();
+                $('#login').show();
+                $('#logout').hide();
             }
         });
-    });
-</script>
+    </script>
