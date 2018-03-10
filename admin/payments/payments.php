@@ -1,6 +1,6 @@
         <?php
         $tbl = $pdo->query('SELECT * FROM `platnosci`');
-        echo '<br><a href="admin/payments/add.php">dodaj platnosc</a><br>'
+        echo '<br><a href="admin/payments/add.php" class="btn btn-success" role="button">dodaj platnosc</a><br>'
         . '<table class="table table-striped">'
         . '<tr>'
         . '<th>ID</th>'
@@ -26,6 +26,6 @@
             . '<th>' . $value['NumerBeneficjenta'] . '</th>'
             . '<th>' . $value['NumerPlatnika'] . '</th>'
             . '<th><a href="admin/payments/usun.php?id=' . $value['ID'] .
-            '">Usuń</a> | <a href="admin/payments/add.php?id=' . $value['ID'] . '">Edytuj</a></th></tr>';
+            '" class="btn btn-danger" role="button">Usuń</a><a href="admin/payments/add.php?id=' . $value['ID'] . '" class="btn btn-info" role="button">Edytuj</a></th></tr>';
         }
         echo '</table>';

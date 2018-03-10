@@ -16,14 +16,14 @@
             <ul class="nav navbar-nav navbar-right">
                 <?php
                 if (isset($_SESSION['id'])) {
-                    $log=$pdo->prepare();
+                    $session = 1;
                     echo '<li><a href="#"><span class="glyphicon glyphicon-user"></span> Witaj</a></li>';
                 } else {
+                    $session = 0;
                     echo '<li><a href="#"><span class="glyphicon glyphicon-user"></span> Zarejestruj się</a></li>';
                 }
                 ?>
-                
-                <li><a href="logowanie.php"><span class="glyphicon glyphicon-log-in"></span>
+                <li><a href="#" id="link"><span class="glyphicon glyphicon-log-in"></span>
                         <?php
                         if (isset($_SESSION['id'])) {
                             echo " Wyloguj się";
@@ -36,3 +36,24 @@
         </div>
     </div>
 </nav>
+<div id="pokaz" style="display: none; z-index: 1; position: ">
+    <form method="POST" action="logowanie.php">
+        Login: <input name="login" type="text" /><br>
+        Hasło: <input name="haslo" type="password"/><br>
+        <input type="submit" value="OK"/>
+    </form>
+</div>
+<script>
+    $ses =<?php echo $session; ?>;
+    $(document).ready(function () {
+        $("#link").click(function () {
+            if ($ses === 0)
+                $("#pokaz").toggle();
+            else
+            {
+                $("#pokaz").load('wyloguj.php');
+                location.reload();
+            }
+        });
+    });
+</script>

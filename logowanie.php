@@ -23,14 +23,5 @@ if (isset($_POST['login']) && isset($_POST['haslo'])) {
         echo $ex->getMessage();
     }
 }
-?>
-
-<form method="POST" action="logowanie.php">
-    Login: <input name="login" type="text" /><br>
-    Hasło: <input name="haslo" type="password"/><br>
-    <input type="submit" value="OK"/>
-</form>
-
-<?php
 ob_end_flush();
 ?>

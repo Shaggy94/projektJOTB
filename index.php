@@ -9,7 +9,7 @@
 
     </head>
     <body>
-        <div class="container-fluid">
+        <div class="container-fluid" style="z-index: 0;">
             <?php
             session_start();
             include './connection.php';
