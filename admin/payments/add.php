@@ -29,7 +29,7 @@ if (isset($_POST['nrKBen'])) {
     $sth->bindParam(':nrPlat', $_POST['nrPlat']);
     $sth->execute();
 
-    header('location: ../../paneladmina.php');
+    header('location: ../../paneladmina.php#platnosci');
 }
 $idGet = isset($_GET['id']) ? intval($_GET['id']) : 0;
 

@@ -9,9 +9,9 @@ if ($id > 0) {
     $sth->bindParam(':id', $id);
     $sth->execute();
     
-    header('location: ../../paneladmina.php');
+    header('location: ../../paneladmina.php#platnosci');
 }else{
-    header('location: ../../paneladmina.php');
+    header('location: ../../paneladmina.php#platnosci');
 }
 /* 
  * To change this license header, choose License Headers in Project Properties.
