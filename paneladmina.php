@@ -34,13 +34,19 @@ include 'connection.php';
             <?php
             include './navbar.php';
             ?>
-            <h2>Panel admina</h2>
+            <div class="well well-lg"><h1>Panel administratora</h1></div>
+            
 
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#powiadomienia">Powiadomienia</a></li>
                 <li><a data-toggle="tab" href="#dostawcy">Dostawcy</a></li>
                 <li><a data-toggle="tab" href="#platnosci">Płatności</a></li>
-                <!--<li><a data-toggle="tab" href="#menu3">Menu 3</a></li>-->
+                <li><a data-toggle="tab" href="#sprzedawcy">Sprzedawcy</a></li>
+                <li><a data-toggle="tab" href="#klienci">Klienci</a></li>
+                <li><a data-toggle="tab" href="#magazyn">Magazyn</a></li>
+                <li><a data-toggle="tab" href="#produkty">Produkty</a></li>
+                <li><a data-toggle="tab" href="#faktury">Faktury</a></li>
+                <li><a data-toggle="tab" href="#zamowienia">Zamówienia</a></li>
             </ul>
 
             <div class="tab-content" >
@@ -66,8 +72,55 @@ include 'connection.php';
                         ?>
                     </div>
                 </div>
+                <div id="zamowienia" class="tab-pane fade">
+                    <h3>Zamówienia</h3>
+                    <div class="table-responsive">
+                        <?php
+                        
+                        ?>
+                    </div>
+                </div>            
+                <div id="sprzedawcy" class="tab-pane fade">
+                    <h3>Sprzedawcy</h3>
+                    <div class="table-responsive">
+                        <?php
+                        
+                        ?>
+                    </div>
+                </div>
+                <div id="produkty" class="tab-pane fade">
+                    <h3>Produkty</h3>
+                    <div class="table-responsive">
+                        <?php
+                        
+                        ?>
+                    </div>
+                </div>
+                <div id="magazyn" class="tab-pane fade">
+                    <h3>Magazyn</h3>
+                    <div class="table-responsive">
+                        <?php
+                        
+                        ?>
+                    </div>
+                </div>
+                <div id="klienci" class="tab-pane fade">
+                    <h3>Klienci</h3>
+                    <div class="table-responsive">
+                        <?php
+                        
+                        ?>
+                    </div>
+                </div>
+                <div id="faktury" class="tab-pane fade">
+                    <h3>Faktury</h3>
+                    <div class="table-responsive">
+                        <?php
+                        
+                        ?>
+                    </div>
+                </div>
             </div>
-
         </div>
     </body>
 </html>
