@@ -1,11 +1,9 @@
 <?php
 include '../../connection.php';
-
 if (isset($_POST['nrs'])) {
     $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
-
     if ($id > 0) {
-        $sth = $pdo->prepare('UPDATE `dostawcy` SET `NrSprzedawcy`=:nrs,'
+        $sth = $pdo->prepare('UPDATE `dostawcy` SET `NrDostawcy`=:nrs,'
                 . '`Imie`=:imie,'
                 . '`Nazwisko`=:nazw,'
                 . '`Ulica`=:ul,'
@@ -28,16 +26,13 @@ if (isset($_POST['nrs'])) {
     $sth->bindParam(':miasto', $_POST['miasto']);
     $sth->bindParam(':NIP', $_POST['NIP']);
     $sth->execute();
-
-    header('location: providers.php');
+    header('location: ../../paneladmina.php');
 }
 $idGet = isset($_GET['id']) ? intval($_GET['id']) : 0;
-
 if ($idGet > 0) {
     $sth = $pdo->prepare('SELECT * FROM dostawcy WHERE id=:id');
     $sth->bindParam(':id', $idGet);
     $sth->execute();
-
     $result = $sth->fetch();
 }
 ?>
@@ -51,8 +46,8 @@ if ($idGet > 0) {
     ?>
 
     Nrumer Sprzedawcy: <input type="text" name="nrs" <?php
-    if (isset($result['NrSprzedawcy'])) {
-        echo 'value="' . $result['NrSprzedawcy'] . '"';
+    if (isset($result['NrDostawcy'])) {
+        echo 'value="' . $result['NrDostawcy'] . '"';
     }
     ?>/><br><br>
     Imię: <input type="text" name="imie" <?php
@@ -93,5 +88,3 @@ if ($idGet > 0) {
     <input type="submit" value="Zapisz" />
 
 </form>
-
-

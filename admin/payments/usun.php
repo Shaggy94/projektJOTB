@@ -1,6 +1,6 @@
 <?php
 
-include '../connection.php';
+include '../../connection.php';
 
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
@@ -9,9 +9,9 @@ if ($id > 0) {
     $sth->bindParam(':id', $id);
     $sth->execute();
     
-    header('location: payments.php');
+    header('location: ../../paneladmina.php');
 }else{
-    header('location: payments.php');
+    header('location: ../../paneladmina.php');
 }
 /* 
  * To change this license header, choose License Headers in Project Properties.

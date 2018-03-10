@@ -6,7 +6,7 @@ echo '<br><a href="admin/providers/add.php" class="btn btn-success" role="button
  . '<table class="table table-striped">'
  . '<tr>'
  . '<th>ID</th>'
- . '<th>Numer Sprzedawcy</th>'
+ . '<th>Numer Dostawcy</th>'
  . '<th>Imię</th>'
  . '<th>Nazwisko</th>'
  . '<th>Ulica</th>'
@@ -19,7 +19,7 @@ echo'</tr>';
 foreach ($tbl->fetchAll() as $value) {
     echo '<tr>'
     . '<th>' . $value['ID'] . '</th>'
-    . '<th>' . $value['NrSprzedawcy'] . '</th>'
+    . '<th>' . $value['NrDostawcy'] . '</th>'
     . '<th>' . $value['Imie'] . '</th>'
     . '<th>' . $value['Nazwisko'] . '</th>'
     . '<th>' . $value['Ulica'] . '</th>'
