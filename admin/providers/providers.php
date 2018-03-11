@@ -29,22 +29,19 @@ foreach ($tbl->fetchAll() as $value) {
     . '<th><a href="admin/providers/usun.php?id=' . $value['ID'] .
     '" class="btn btn-danger" role="button" >Usuń</a>'
     . '<a href="'
-    . $value['ID'] . '" class="btn btn-info" role="button" data-toggle="modal" data-target="#providers-modal">Edytuj</a></th></tr>';
+    . $value["ID"] . '" class="btn btn-info" role="button" data-toggle="modal" data-target="#providers-modal">Edytuj</a></th></tr>';
 }
 echo '</table>';
-
 ?>
 <script>
     $(document).ready(function () {
         $(".btn-info").click(function () {
             let addressValue = $(this).attr("href");
             console.log(addressValue);
-            window.location.href='paneladmina.php?id='+addressValue+'#dostawcy';
+            window.location.href = 'paneladmina.php?id=' + addressValue + '#dostawcy';
         });
     });
-
 </script>
-<a href="#" id="login" data-toggle="modal" data-target="#providers-modal">Dodaj</a>
 
 <div class="modal fade" id="providers-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
@@ -52,14 +49,13 @@ echo '</table>';
             <h1>Dodaj dostawcę</h1><br>
             <form method="POST" action="admin/providers/add.php">
                 <?php
-                
                 $idGet = isset($_GET['id']) ? intval($_GET['id']) : 0;
-                
+
                 $sth = $pdo->prepare('SELECT * FROM dostawcy WHERE id=:id');
                 $sth->bindParam(':id', $idGet);
                 $sth->execute();
                 $result = $sth->fetch();
-                
+
                 if ($idGet > 0) {
                     echo '<input type="hidden" name="id" value="' . $idGet . '">';
                 }
