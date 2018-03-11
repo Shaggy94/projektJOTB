@@ -11,7 +11,7 @@ if ($id > 0) {
     $sth->bindParam(':id', $id);
     $sth->execute();
     
-    header('location: ../../paneladmina.php#klienci');
+    header('location: '.$basicPath.'paneladmina.php#klienci');
 }else{
-    header('location: ../../paneladmina.php#klienci');
+    header('location: '.$basicPath.'paneladmina.php#klienci');
 }

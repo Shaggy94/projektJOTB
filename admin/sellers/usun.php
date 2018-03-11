@@ -6,13 +6,13 @@ include $basicPath.'connection.php';
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 if ($id > 0) {
-    $sth = $pdo->prepare('DELETE FROM platnosci WHERE id=:id');
+    $sth = $pdo->prepare('DELETE FROM sprzedawcy WHERE id=:id');
     $sth->bindParam(':id', $id);
     $sth->execute();
     
-    header('location: '.$basicPath.'paneladmina.php#platnosci');
+    header('location: '.$basicPath.'paneladmina.php#sprzedawcy');
 }else{
-    header('location: '.$basicPath.'paneladmina.php#platnosci');
+    header('location: '.$basicPath.'paneladmina.php#sprzedawcy');
 }
 /* 
  * To change this license header, choose License Headers in Project Properties.

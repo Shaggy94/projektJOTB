@@ -1,8 +1,7 @@
 <?php
-
 $basicPath = './';
-include $basicPath.'connection.php';
-include $basicPath.'header.php';
+include $basicPath . 'connection.php';
+include $basicPath . 'header.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -81,34 +80,35 @@ include $basicPath.'header.php';
                     <h3>Sprzedawcy</h3>
                     <div class="table-responsive">
                         <?php
+                        include 'admin/sellers/sellers.php';
                         ?>
                     </div>
                 </div>
                 <div id="produkty" class="tab-pane fade">
                     <h3>Produkty</h3>
                     <div class="table-responsive">
-<?php
-?>
+                        <?php
+                        ?>
                     </div>
                 </div>
                 <div id="magazyn" class="tab-pane fade">
                     <h3>Magazyn</h3>
                     <div class="table-responsive">
-<?php ?>
+                        <?php ?>
                     </div>
                 </div>
                 <div id="klienci" class="tab-pane fade">
                     <h3>Klienci</h3>
                     <div class="table-responsive">
-<?php
-include './admin/customers/customers.php';
-?>
+                        <?php
+                        include './admin/customers/customers.php';
+                        ?>
                     </div>
                 </div>
                 <div id="faktury" class="tab-pane fade">
                     <h3>Faktury</h3>
                     <div class="table-responsive">
-<?php ?>
+                        <?php ?>
                     </div>
                 </div>
             </div>

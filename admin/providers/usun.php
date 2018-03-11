@@ -1,6 +1,7 @@
 <?php
-
-include '../../connection.php';
+$basicPath = '../../';
+include $basicPath.'header.php';
+include $basicPath.'connection.php';
 
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
@@ -9,9 +10,9 @@ if ($id > 0) {
     $sth->bindParam(':id', $id);
     $sth->execute();
     
-    header('location: ../../paneladmina.php#dostawcy');
+    header('location: '.$basicPath.'paneladmina.php#dostawcy');
 }else{
-    header('location: ../../paneladmina.php#dostawcy');
+    header('location: '.$basicPath.'paneladmina.php#dostawcy');
 }
 /* 
  * To change this license header, choose License Headers in Project Properties.
