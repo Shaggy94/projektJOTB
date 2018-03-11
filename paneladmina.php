@@ -88,6 +88,7 @@ include $basicPath . 'header.php';
                     <h3>Produkty</h3>
                     <div class="table-responsive">
                         <?php
+                        include 'admin/products/products.php';
                         ?>
                     </div>
                 </div>
@@ -108,7 +109,9 @@ include $basicPath . 'header.php';
                 <div id="faktury" class="tab-pane fade">
                     <h3>Faktury</h3>
                     <div class="table-responsive">
-                        <?php ?>
+                        <?php
+                        include 'admin/factures/factures.php';
+                        ?>
                     </div>
                 </div>
             </div>

@@ -17,7 +17,7 @@
                 <?php
                 if (isset($_SESSION['id'])) {
                     $session = 1;
-                    echo '<li><a href="#"><span class="glyphicon glyphicon-user"></span> '.$_SESSION['login'].'</a></li>';
+                    echo '<li><a href="#"><span class="glyphicon glyphicon-user"></span> ' . $_SESSION['login'] . '</a></li>';
                 } else {
                     $session = 0;
                     echo '<li><a href="#"><span class="glyphicon glyphicon-user"></span> Zarejestruj się</a></li>';
@@ -30,32 +30,31 @@
         </div>
     </div>
 </nav>
-    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog">
-            <div class="loginmodal-container">
-                <h1>Zaloguj się</h1><br>
-                <form method="POST" action="<?php echo $basicPath; ?>logowanie.php">
-                    <input type="text" name="login" placeholder="Login">
-                    <input type="password" name="haslo" placeholder="Hasło">
-                    <input type="submit" class="login loginmodal-submit" value="Zaloguj">
-                </form>
-                <div class="login-help">
-                    <a href="#">Utwórz nowe konto</a> - <a href="#">Przypomnij hasło</a>
-                </div>
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="loginmodal-container">
+            <h1>Zaloguj się</h1><br>
+            <form method="POST" action="<?php echo $basicPath; ?>logowanie.php">
+                <input type="text" name="login" placeholder="Login">
+                <input type="password" name="haslo" placeholder="Hasło">
+                <input type="submit" class="login loginmodal-submit" value="Zaloguj">
+            </form>
+            <div class="login-help">
+                <a href="#">Utwórz nowe konto</a> - <a href="#">Przypomnij hasło</a>
             </div>
         </div>
     </div>
-    <script>
-        $ses =<?php echo $session; ?>;
-        $(document).ready(function () {
-            if ($ses !== 0) {
-                $('#login').hide();
-                $('#logout').show();
-            }
-            else
-            {
-                $('#login').show();
-                $('#logout').hide();
-            }
-        });
-    </script>
+</div>
+<script>
+    $ses =<?php echo $session; ?>;
+    $(document).ready(function () {
+        if ($ses !== 0) {
+            $('#login').hide();
+            $('#logout').show();
+        } else
+        {
+            $('#login').show();
+            $('#logout').hide();
+        }
+    });
+</script>
