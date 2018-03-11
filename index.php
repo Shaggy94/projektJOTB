@@ -13,6 +13,7 @@
         <div class="container-fluid" style="z-index: 0;">
             <?php
             session_start();
+            $basicPath ='./';
             include './connection.php';
             include './navbar.php';
             ?>

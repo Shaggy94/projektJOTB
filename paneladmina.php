@@ -1,10 +1,8 @@
 <?php
-session_start();
-if (!isset($_SESSION['id'])) {
-    header('Location: index.php');
-    die();
-}
-include 'connection.php';
+
+$basicPath = './';
+include $basicPath.'connection.php';
+include $basicPath.'header.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,7 +33,7 @@ include 'connection.php';
             include './navbar.php';
             ?>
             <div class="well well-lg"><h1>Panel administratora</h1></div>
-            
+
 
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#powiadomienia">Powiadomienia</a></li>
@@ -76,7 +74,6 @@ include 'connection.php';
                     <h3>Zamówienia</h3>
                     <div class="table-responsive">
                         <?php
-                        
                         ?>
                     </div>
                 </div>            
@@ -84,40 +81,34 @@ include 'connection.php';
                     <h3>Sprzedawcy</h3>
                     <div class="table-responsive">
                         <?php
-                        
                         ?>
                     </div>
                 </div>
                 <div id="produkty" class="tab-pane fade">
                     <h3>Produkty</h3>
                     <div class="table-responsive">
-                        <?php
-                        
-                        ?>
+<?php
+?>
                     </div>
                 </div>
                 <div id="magazyn" class="tab-pane fade">
                     <h3>Magazyn</h3>
                     <div class="table-responsive">
-                        <?php
-                        
-                        ?>
+<?php ?>
                     </div>
                 </div>
                 <div id="klienci" class="tab-pane fade">
                     <h3>Klienci</h3>
                     <div class="table-responsive">
-                        <?php
-                        
-                        ?>
+<?php
+include './admin/customers/customers.php';
+?>
                     </div>
                 </div>
                 <div id="faktury" class="tab-pane fade">
                     <h3>Faktury</h3>
                     <div class="table-responsive">
-                        <?php
-                        
-                        ?>
+<?php ?>
                     </div>
                 </div>
             </div>

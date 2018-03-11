@@ -6,12 +6,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span> 
             </button>
-            <a class="navbar-brand" href="index.php">WebSiteName</a>
+            <a class="navbar-brand" href="<?php echo $basicPath; ?>index.php">WebSiteName</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="index.php">Strona domowa</a></li>
-                <li><a href="paneladmina.php">Tabele</a></li>
+                <li class="active"><a href="<?php echo $basicPath; ?>index.php">Strona domowa</a></li>
+                <li><a href="<?php echo $basicPath; ?>paneladmina.php">Tabele</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <?php
@@ -24,7 +24,7 @@
                 }
                 ?>
                 <li><a href="#" id="login" data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-log-in"></span> Zaloguj</a>
-                    <a href="wyloguj.php" id='logout' style="display: none;"><span class="glyphicon glyphicon-log-out"></span> Wyloguj</a>
+                    <a href="<?php echo $basicPath; ?>wyloguj.php" id='logout' style="display: none;"><span class="glyphicon glyphicon-log-out"></span> Wyloguj</a>
                 </li>
             </ul>
         </div>
@@ -34,7 +34,7 @@
         <div class="modal-dialog">
             <div class="loginmodal-container">
                 <h1>Zaloguj się</h1><br>
-                <form method="POST" action="logowanie.php">
+                <form method="POST" action="<?php echo $basicPath; ?>logowanie.php">
                     <input type="text" name="login" placeholder="Login">
                     <input type="password" name="haslo" placeholder="Hasło">
                     <input type="submit" class="login loginmodal-submit" value="Zaloguj">
