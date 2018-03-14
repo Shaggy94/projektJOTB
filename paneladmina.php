@@ -73,6 +73,7 @@ include $basicPath . 'header.php';
                     <h3>Zamówienia</h3>
                     <div class="table-responsive">
                         <?php
+                        include 'admin/orders/orders.php';
                         ?>
                     </div>
                 </div>            

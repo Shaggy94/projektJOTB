@@ -15,8 +15,8 @@ if (isset($_POST['nrFakt'])) {
                 . '`NumerDomu`=:nrDomu,'
                 . '`KodPocztowy`=:kodPocz,'
                 . '`Miasto`=:miasto,'
-				. '`NIP`=:nip,'
-				. '`Kraj`=:kraj'
+                . '`NIP`=:nip,'
+                . '`Kraj`=:kraj'
                 . ' WHERE id=:id');
         $sth->bindParam(':id', $id);
     } else {
@@ -31,8 +31,8 @@ if (isset($_POST['nrFakt'])) {
     $sth->bindParam(':nrDomu', $_POST['nrDomu']);
     $sth->bindParam(':kodPocz', $_POST['kodPocz']);
     $sth->bindParam(':miasto', $_POST['miasto']);
-	$sth->bindParam(':nip', $_POST['nip']);
-	$sth->bindParam(':kraj', $_POST['kraj']);
+    $sth->bindParam(':nip', $_POST['nip']);
+    $sth->bindParam(':kraj', $_POST['kraj']);
     $sth->execute();
 
     header('location: ../../paneladmina.php#faktury');
@@ -62,7 +62,7 @@ if ($idGet > 0) {
     <body>
         <div class="container-fluid">
             <?php
-            include $basicPath.'navbar.php';
+            include $basicPath . 'navbar.php';
             ?>
             <form method="POST" action="add.php">
                 <?php
@@ -135,7 +135,7 @@ if ($idGet > 0) {
                             }
                             ?>/></td>
                     </tr> 
-					<tr>
+                    <tr>
                         <td>NIP: </td>
                         <td><input type="text" name="nip" <?php
                             if (isset($result['NIP'])) {
@@ -143,7 +143,7 @@ if ($idGet > 0) {
                             }
                             ?>/></td>
                     </tr> 
-					<tr>
+                    <tr>
                         <td>Kraj: </td>
                         <td><input type="text" name="kraj" <?php
                             if (isset($result['Kraj'])) {

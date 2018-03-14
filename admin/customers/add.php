@@ -85,7 +85,7 @@ if ($idGet > 0) {
                     <tr>
                         <td>Nazwisko: </td>
                         <td><input type="text" name="nazw" <?php
-                            if (isset($result['c'])) {
+                            if (isset($result['Nazwisko'])) {
                                 echo 'value="' . $result['Nazwisko'] . '"';
                             }
                             ?>/></td>
