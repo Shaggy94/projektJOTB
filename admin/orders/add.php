@@ -7,7 +7,7 @@ if (isset($_POST['nrz'])) {
     echo "dodano";
     $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
     if ($id > 0) {
-        $sth = $pdo->prepare('UPDATE `zamowienia` SET `NrZamowienia`=:nrz,'
+        $sth = $pdo->prepare('UPDATE `zamowienia` SET'
                 . '`NumerZamowienia`=:nrz,'
                 . '`DataSprzedazy`=:dsp,'
                 . '`IDFaktury`=:idf,'
@@ -59,10 +59,10 @@ if ($idGet > 0) {
                 ?>
                 <table>
                     <tr>
-                        <td>Nrumer Klienta: </td>
+                        <td>Nrumer Zamówienia: </td>
                         <td><input type="text" name="nrz" <?php
-                            if (isset($result['NrZamowienia'])) {
-                                echo 'value="' . $result['NrZamowienia'] . '"';
+                            if (isset($result['NumerZamowienia'])) {
+                                echo 'value="' . $result['NumerZamowienia'] . '"';
                             }
                             ?>/></td>
                     </tr>
