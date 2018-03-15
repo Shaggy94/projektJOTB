@@ -8,8 +8,13 @@ include $basicPath . 'header.php';
     <head>
         <meta charset="UTF-8">
         <title>ProjektJOTB</title>
+        <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href='loginstyle.css' type="text/css"/>
         <script>
@@ -50,7 +55,7 @@ include $basicPath . 'header.php';
                 <div id="powiadomienia" class="tab-pane fade in active">
                     <h3>Powiadomienia</h3>
                     <p>
-                        TUTAJ BĘDĄ POWIADOMIENIA
+                    <div id="canvas"></div>
                     </p>
                 </div>
                 <div id="dostawcy" class="tab-pane fade">
@@ -96,7 +101,9 @@ include $basicPath . 'header.php';
                 <div id="magazyn" class="tab-pane fade">
                     <h3>Magazyn</h3>
                     <div class="table-responsive">
-                        <?php ?>
+                        <?php
+                        include 'admin/store/Store.php';
+                        ?>
                     </div>
                 </div>
                 <div id="klienci" class="tab-pane fade">

@@ -30,7 +30,7 @@ if (isset($_POST['nrs'])) {
     $sth->bindParam(':miasto', $_POST['miasto']);
     $sth->bindParam(':NIP', $_POST['NIP']);
     $sth->execute();
-    header('location: ../../paneladmina.php#dostawcy');
+    header('Location: ../../paneladmina.php#dostawcy');
 }
 $idGet = isset($_GET['id']) ? intval($_GET['id']) : 0;
 if ($idGet > 0) {

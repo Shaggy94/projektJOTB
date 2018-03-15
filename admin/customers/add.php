@@ -7,15 +7,15 @@ if (isset($_POST['nrk'])) {
     echo "dodano";
     $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
     if ($id > 0) {
-        $sth = $pdo->prepare('UPDATE `dostawcy` SET `NrKlienta`=:nrk,'
+        $sth = $pdo->prepare('UPDATE `klienci` SET `NrKlienta`=:nrk,'
                 . '`Imie`=:imie,'
                 . '`Nazwisko`=:nazw,'
                 . '`Ulica`=:ul,'
                 . '`NrDomu`=:nrDomu,'
                 . '`KodPocztowy`=:kod,'
                 . '`Miasto`=:miasto,'
-                . '`NIP`=:NIP'
-                . '`Kraj`=":kraj'
+                . '`NIP`=:NIP,'
+                . '`Kraj`=:kraj'
                 . ' WHERE ID=:id');
         $sth->bindParam(':id', $id);
     } else {

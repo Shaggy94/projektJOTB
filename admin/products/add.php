@@ -11,7 +11,7 @@ if (isset($_POST['nazwa'])) {
                 . '`VAT`=:vat,'
                 . '`CenaNetto`=:cnNetto,'
                 . '`Opis`=:opis,'
-                . '`IDDostawcy`=:idDost,'
+                . '`IDDostawcy`=:idDost'
                 . ' WHERE id=:id');
         $sth->bindParam(':id', $id);
     } else {

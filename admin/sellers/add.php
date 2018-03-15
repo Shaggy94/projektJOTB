@@ -3,11 +3,11 @@ $basicPath = '../../';
 include $basicPath.'header.php';
 include $basicPath.'connection.php';
 
-if (isset($_POST['nrs'])) {
+if (isset($_POST['nrsp'])) {
 
     $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
     if ($id > 0) {
-        $sth = $pdo->prepare('UPDATE `dostawcy` SET `Nrsprzedawcy`=:nrsp,'
+        $sth = $pdo->prepare('UPDATE `sprzedawcy` SET `NrSprzedawcy`=:nrsp,'
                 . '`Imie`=:imie,'
                 . '`Nazwisko`=:nazw,'
                 . '`Ulica`=:ul,'
@@ -18,9 +18,10 @@ if (isset($_POST['nrs'])) {
                 . ' WHERE id=:id');
         $sth->bindParam(':id', $id);
     } else {
-        $sth = $pdo->prepare('INSERT INTO `dostawcy` VALUES (NULL,:nrsp, :imie,:nazw, :ul,:nrDomu,'
+        $sth = $pdo->prepare('INSERT INTO `sprzedawcy` VALUES (NULL,:nrsp, :imie,:nazw, :ul,:nrDomu,'
                 . ':kod,:miasto,:NIP)');
     }
+    echo "co to kurwa ma być";
     $sth->bindParam(':nrsp', $_POST['nrsp']);
     $sth->bindParam(':imie', $_POST['imie']);
     $sth->bindParam(':nazw', $_POST['nazw']);
@@ -30,7 +31,7 @@ if (isset($_POST['nrs'])) {
     $sth->bindParam(':miasto', $_POST['miasto']);
     $sth->bindParam(':NIP', $_POST['NIP']);
     $sth->execute();
-    header('location: '.$basicPath.'paneladmina.php#dostawcy');
+    header('location: '.$basicPath.'paneladmina.php#sprzedawcy');
 }
 $idGet = isset($_GET['id']) ? intval($_GET['id']) : 0;
 if ($idGet > 0) {
