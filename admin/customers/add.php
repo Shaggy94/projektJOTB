@@ -1,8 +1,7 @@
 <?php
-
 $basicPath = '../../';
-include $basicPath.'header.php';
-include $basicPath.'connection.php';
+include $basicPath . 'header.php';
+include $basicPath . 'connection.php';
 if (isset($_POST['nrk'])) {
     echo "dodano";
     $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
@@ -57,92 +56,111 @@ if ($idGet > 0) {
     <body>
         <div class="container-fluid">
             <?php
-            include $basicPath.'navbar.php';
+            include $basicPath . 'navbar.php';
             ?>
-            <form method="POST" action="add.php">
+            <form method="POST" action="add.php" class="form-horizontal col-sm-offset-4">
                 <?php
                 if ($idGet > 0) {
                     echo '<input type="hidden" name="id" value="' . $idGet . '">';
                 }
                 ?>
-                <table>
-                    <tr>
-                        <td>Nrumer Klienta: </td>
-                        <td><input type="text" name="nrk" <?php
-                            if (isset($result['NrKlienta'])) {
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="nrk">Numer klienta: </label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="nrk" name="nrk" placeholder="Wprowadź numer klienta" <?php
+                        if (isset($result['NrKlienta'])) {
                                 echo 'value="' . $result['NrKlienta'] . '"';
                             }
-                            ?>/></td>
-                    </tr>
-                    <tr>
-                        <td>Imię: </td>
-                        <td><input type="text" name="imie" <?php
-                            if (isset($result['Imie'])) {
+                        ?>>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="imie">Imię: </label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="imie" name="imie" placeholder="Wprowadź imię" <?php
+                       if (isset($result['Imie'])) {
                                 echo 'value="' . $result['Imie'] . '"';
                             }
-                            ?>/></td>
-                    </tr>
-                    <tr>
-                        <td>Nazwisko: </td>
-                        <td><input type="text" name="nazw" <?php
-                            if (isset($result['Nazwisko'])) {
+                        ?>>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="nazw">Nazwisko: </label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="nazw" name="nazw" placeholder="Wprowadź nazwisko" <?php
+                      if (isset($result['Nazwisko'])) {
                                 echo 'value="' . $result['Nazwisko'] . '"';
                             }
-                            ?>/></td>
-                    </tr>
-                    <tr>
-                        <td>Ulica: </td>
-                        <td><input type="text" name="ul" <?php
-                            if (isset($result['Ulica'])) {
+                        ?>>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="ul">Ulica: </label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="ul" name="ul" placeholder="Wprowadź ulicę" <?php
+                       if (isset($result['Ulica'])) {
                                 echo 'value="' . $result['Ulica'] . '"';
                             }
-                            ?>/></td>
-                    </tr>
-                    <tr>
-                        <td>Numer Domu: </td>
-                        <td><input type="number" name="nrDomu" <?php
-                            if (isset($result['NrDomu'])) {
+                        ?>>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="nrDomu">Numer domu: </label>
+                    <div class="col-sm-3">
+                        <input type="number" class="form-control" id="nrDomu" name="nrDomu" placeholder="Wprowadź numer domu" <?php
+                       if (isset($result['NrDomu'])) {
                                 echo 'value="' . $result['NrDomu'] . '"';
                             }
-                            ?>/></td>
-                    </tr>
-                    <tr>
-                        <td>Kod Pocztowy: </td>
-                        <td><input type="text" name="kod" <?php
-                            if (isset($result['KodPocztowy'])) {
+                        ?>>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="kod">Kod pocztowy: </label>
+                    <div class="col-sm-3">
+                        <input type="tekst" class="form-control" id="kod" name="kod" placeholder="Wprowadź kod pocztowy" <?php
+                       if (isset($result['KodPocztowy'])) {
                                 echo 'value="' . $result['KodPocztowy'] . '"';
                             }
-                            ?>/></td>
-                    </tr>
-                    <tr>
-                        <td>Miasto: </td>
-                        <td><input type="text" name="miasto" <?php
-                            if (isset($result['Miasto'])) {
+                        ?>>
+                    </div>
+                </div>
+                
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" for="miasto">Miasto: </label>
+                    <div class="col-sm-3">
+                        <input type="tekst" class="form-control" id="miasto" name="miasto" placeholder="Wprowadź miasto" <?php
+                       if (isset($result['Miasto'])) {
                                 echo 'value="' . $result['Miasto'] . '"';
                             }
-                            ?>/></td>
-                    </tr>
-                    <tr>
-                        <td>NIP: </td>
-                        <td><input type="text" name="NIP" <?php
-                            if (isset($result['NIP'])) {
+                        ?>>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label class="control-label col-sm-2" for="nip">NIP: </label>
+                    <div class="col-sm-3">
+                        <input type="tekst" class="form-control" id="nip" name="nip" placeholder="Wprowadź NIP" <?php
+                        if (isset($result['NIP'])) {
                                 echo 'value="' . $result['NIP'] . '"';
                             }
-                            ?>/></td>
-                    </tr>
-                    <tr>
-                        <td>Kraj: </td>
-                        <td><input type="text" name="kraj" <?php
-                            if (isset($result['Kraj'])) {
+                        ?>>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="kraj">Kraj: </label>
+                    <div class="col-sm-3">
+                        <input type="tekst" class="form-control" id="kraj" name="kraj" placeholder="Wprowadź nazwę kraju" <?php
+                        if (isset($result['Kraj'])) {
                                 echo 'value="' . $result['Kraj'] . '"';
                             }
-                            ?>/></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><input type="submit" class="btn btn-success" value="Zapisz"></td>
-                    </tr>
-                </table>
+                        ?>>
+                    </div>
+                </div>
+                 <div class="form-group"> 
+                        <div class="col-sm-offset-2 col-sm-3">
+                            <input type="submit" class="btn btn-success" value="Zapisz">
+                        <a href="../../paneladmina.php#klienci" class="btn btn-default" role="button">Powrót</a>
+                        </div>
+                 </div>
             </form>
         </div>
     </body>
