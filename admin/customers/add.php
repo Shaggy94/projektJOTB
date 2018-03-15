@@ -136,9 +136,9 @@ if ($idGet > 0) {
                     </div>
                 </div>
                  <div class="form-group">
-                    <label class="control-label col-sm-2" for="nip">NIP: </label>
+                    <label class="control-label col-sm-2" for="NIP">NIP: </label>
                     <div class="col-sm-3">
-                        <input type="tekst" class="form-control" id="nip" name="nip" placeholder="Wprowadź NIP" <?php
+                        <input type="tekst" class="form-control" id="NIP" name="NIP" placeholder="Wprowadź NIP" <?php
                         if (isset($result['NIP'])) {
                                 echo 'value="' . $result['NIP'] . '"';
                             }
