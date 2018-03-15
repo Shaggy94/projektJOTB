@@ -1,5 +1,6 @@
 <?php
-$tbl = $pdo->query('SELECT * FROM `produkty`');
+
+$tbl = $pdo->query('SELECT p.ID,p.Nazwa,p.VAT,p.CenaNetto,p.Opis,d.Imie,d.Nazwisko FROM `produkty` as p, dostawcy as d WHERE d.ID=p.IDDostawcy');
 
 echo '<br><a href="admin/products/add.php" class="btn btn-success" role="button">dodaj produkt</a><br>'
  . '<table class="table table-striped">'
@@ -9,7 +10,8 @@ echo '<br><a href="admin/products/add.php" class="btn btn-success" role="button"
  . '<th>VAT</th>'
  . '<th>Cenna netto</th>'
  . '<th>Opis</th>'
- . '<th>IDDostawcy</th>'
+ . '<th>Imię dostawcy</th>'
+ . '<th>Nazwisko dostawcy</th>'
  . '<th>Opcje</th>';
 echo'</tr>';
 foreach ($tbl->fetchAll() as $value) {
@@ -19,7 +21,8 @@ foreach ($tbl->fetchAll() as $value) {
     . '<th>' . $value['VAT'] . '</th>'
     . '<th>' . $value['CenaNetto'] . '</th>'
     . '<th>' . $value['Opis'] . '</th>'
-    . '<th>' . $value['IDDostawcy'] . '</th>'
+    . '<th>' . $value['Imie'] . '</th>'
+    . '<th>' . $value['Nazwisko'] . '</th>'
     . '<th><a href="admin/products/usun.php?id=' . $value['ID'] .
     '" class="btn btn-danger" role="button" >Usuń</a>'
     . '<a href="admin/products/add.php?id='

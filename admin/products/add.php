@@ -3,6 +3,8 @@ $basicPath = '../../';
 include $basicPath . 'header.php';
 include $basicPath . 'connection.php';
 
+$get = $pdo->query('SELECT * FROM dostawcy ORDER BY Nazwisko');
+
 if (isset($_POST['nazwa'])) {
     $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
 
@@ -21,19 +23,23 @@ if (isset($_POST['nazwa'])) {
     $sth->bindParam(':vat', $_POST['vat']);
     $sth->bindParam(':cnNetto', $_POST['cnNetto']);
     $sth->bindParam(':opis', $_POST['opis']);
-    $sth->bindParam(':idDost', $_POST['idDost']);
+    $sth->bindParam(':idDost', intval($_POST['idDost']));
     $sth->execute();
-
     header('location: ../../paneladmina.php#produkty');
 }
 $idGet = isset($_GET['id']) ? intval($_GET['id']) : 0;
-
 if ($idGet > 0) {
     $sth = $pdo->prepare('SELECT * FROM produkty WHERE id=:id');
     $sth->bindParam(':id', $idGet);
     $sth->execute();
 
     $result = $sth->fetch();
+    
+    $str=$pdo->prepare('SELECT * FROM `dostawcy` WHERE id=:id');
+    $str->bindParam(':id',$result['IDDostawcy']);
+    $str->execute();
+    
+    $DostName=$str->fetch();
 }
 ?>
 
@@ -51,7 +57,7 @@ if ($idGet > 0) {
     <body>
         <div class="container-fluid">
             <?php
-            include $basicPath.'navbar.php';
+            include $basicPath . 'navbar.php';
             ?>
             <form method="POST" action="add.php">
                 <?php
@@ -93,12 +99,14 @@ if ($idGet > 0) {
                             ?>/></td>
                     </tr>
                     <tr>
-                        <td>ID Dostawcy: </td>
-                        <td><input type="number" name="idDost" <?php
-                            if (isset($result['IDDostawcy'])) {
-                                echo 'value="' . $result['IDDostawcy'] . '"';
-                            }
-                            ?>/></td>
+                        <td>Dostawca: </td>
+                        <td><select name="idDost">
+                                <?php
+                                echo '<option value="' . $DostName['ID'] . '">' . $DostName['Nazwisko'].' '.$DostName['Imie'] . '</option>';
+                                 foreach ($get->fetchAll() as $provider) {
+                                    echo '<option value="' . $provider['ID'] . '">' .$provider['Nazwisko'].'  '. $provider['Imie'] . '</option>';
+                                }
+                                ?></select></td>
                     </tr>
                     <tr>
                         <td></td>

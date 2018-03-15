@@ -3,8 +3,12 @@ $basicPath = '../../';
 include $basicPath . 'header.php';
 include $basicPath . 'connection.php';
 
-if (isset($_POST['IdProd'])) {
+$get = $pdo->query('SELECT ID,Nazwa FROM produkty ORDER BY Nazwa');
+
+if (isset($_POST['produkt'])) {
+    
     $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
+
 
     if ($id > 0) {
         $sth = $pdo->prepare('UPDATE `magazyn` SET `IDProduktu`=:idProd,'
@@ -14,20 +18,24 @@ if (isset($_POST['IdProd'])) {
     } else {
         $sth = $pdo->prepare('INSERT INTO magazyn VALUES (NULL, :idProd, :Ilosc)');
     }
-    $sth->bindParam(':idProd', $_POST['IdProd']);
+    $sth->bindParam(':idProd', $_POST['produkt']);
     $sth->bindParam(':Ilosc', $_POST['Ilosc']); //here <--
     $sth->execute();
-
-    header('Location: '.$basicPath.'paneladmina.php#magazyn');
+    header('Location: ' . $basicPath . 'paneladmina.php#magazyn');
 }
 $idGet = isset($_GET['id']) ? intval($_GET['id']) : 0;
-
 if ($idGet > 0) {
-    $sth = $pdo->prepare('SELECT * FROM magazyn` WHERE id=:id');
+    $sth = $pdo->prepare('SELECT * FROM `magazyn` WHERE ID=:id');
     $sth->bindParam(':id', $idGet);
     $sth->execute();
 
     $result = $sth->fetch();
+    
+    $str=$pdo->prepare('SELECT * FROM `produkty` WHERE id=:id');
+    $str->bindParam(':id',$result['IDProduktu']);
+    $str->execute();
+    
+    $prodName=$str->fetch();
 }
 ?>
 
@@ -45,7 +53,7 @@ if ($idGet > 0) {
     <body>
         <div class="container-fluid">
             <?php
-            include $basicPath.'navbar.php';
+            include $basicPath . 'navbar.php';
             ?>
             <form method="POST" action="add.php">
                 <?php
@@ -55,12 +63,15 @@ if ($idGet > 0) {
                 ?>
                 <table>
                     <tr>
-                        <td>ID Produktu: </td>
-                        <td><input type="number" name="IdProd" <?php
-                            if (isset($result['IDProduktu'])) {
-                                echo 'value="' . $result['IDProduktu'] . '"';
-                            }
-                            ?>/></td>
+                        <td>Produkt: </td>
+                        <td><select name="produkt">
+                                <?php
+                                echo '<option value="' . $prodName['ID'] . '">' . $prodName['Nazwa'] . '</option>';
+                                foreach ($get->fetchAll() as $products) {
+                                    echo '<option value="' . $products['ID'] . '">' . $products['Nazwa'] . '</option>';
+                                }
+                                ?>
+                            </select></td>
                     </tr>
                     <tr>
                         <td>Ilosc Produktow: </td>
@@ -70,7 +81,7 @@ if ($idGet > 0) {
                             }
                             ?>/></td>
                     </tr>
-                    
+
                     <tr>
                         <td></td>
                         <td><input type="submit" class="btn btn-success" value="Zapisz"></td>
@@ -80,4 +91,3 @@ if ($idGet > 0) {
         </div>
     </body>
 </html>
-

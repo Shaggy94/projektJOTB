@@ -1,14 +1,4 @@
 <?php
-$page = isset($_GET['page']) ? intval($_GET['page']-1) : 1;
-$limit = 10;
-$from=$page*$limit;
-$count=$pdo->query('SELECT COUNT(id) as cnt FROM `dostawcy`')->fetch()['cnt'];
-$sql='SELECT * FROM `dostawcy` LIMIT '.$from.', '.$limit;
-$allPages= ceil($count/$limit);
-
-//echo 'PAGE: '.$page.'<br>LIMIT: '.$limit.'<br>SQL: '.$sql.'<br>COUNT: '.$count.'<br>ALLPAGES: '.$allPages;
-
-//$tbl = $pdo->query($sql);
 $tbl=$pdo->query('SELECT * FROM `dostawcy`');
 
 echo '<br><a href="admin/providers/add.php" class="btn btn-success" role="button">dodaj dostawcę</a><br>'

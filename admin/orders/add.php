@@ -1,8 +1,12 @@
 <?php
-
 $basicPath = '../../';
-include $basicPath.'header.php';
-include $basicPath.'connection.php';
+include $basicPath . 'header.php';
+include $basicPath . 'connection.php';
+
+$getF = $pdo->query('SELECT ID,NumerFaktury FROM faktury ORDER BY DataWystawienia');
+$getK = $pdo->query('SELECT ID,Imie,Nazwisko FROM klienci ORDER BY Nazwisko');
+$getS = $pdo->query('SELECT ID,Imie,Nazwisko FROM sprzedawcy ORDER BY Nazwisko');
+
 if (isset($_POST['nrz'])) {
     echo "dodano";
     $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
@@ -32,6 +36,21 @@ if ($idGet > 0) {
     $sth->bindParam(':id', $idGet);
     $sth->execute();
     $result = $sth->fetch();
+
+    $sts = $pdo->prepare('SELECT * FROM sprzedawcy WHERE id=:id');
+    $sts->bindParam(':id', $result['IDSprzedawcy']);
+    $sts->execute();
+    $sName = $sts->fetch();
+
+    $stk = $pdo->prepare('SELECT * FROM klienci WHERE id=:id');
+    $stk->bindParam(':id', $result['IDKlienta']);
+    $stk->execute();
+    $kName = $stk->fetch();
+
+    $stf = $pdo->prepare('SELECT * FROM faktury WHERE id=:id');
+    $stf->bindParam(':id', $result['IDFaktury']);
+    $stf->execute();
+    $fName = $stf->fetch();
 }
 ?>
 
@@ -49,7 +68,7 @@ if ($idGet > 0) {
     <body>
         <div class="container-fluid">
             <?php
-            include $basicPath.'navbar.php';
+            include $basicPath . 'navbar.php';
             ?>
             <form method="POST" action="add.php">
                 <?php
@@ -75,30 +94,39 @@ if ($idGet > 0) {
                             ?>/></td>
                     </tr>
                     <tr>
-                        <td>ID Faktury: </td>
-                        <td><input type="number" name="idf" <?php
-                            if (isset($result['IDFaktury'])) {
-                                echo 'value="' . $result['IDFaktury'] . '"';
-                            }
-                            ?>/></td>
+                        <td>Numer faktury: </td>
+                        <td><select name="idf">
+                                <?php
+                                echo '<option value="' . $fName['ID'] . '">' . $fName['NumerFaktury']. '</option>';
+                                foreach ($getF->fetchAll() as $fact) {
+                                    echo '<option value="' . $fact['ID'] . '">'. $fact['NumerFaktury'] . '</option>';
+                                }
+                                ?>
+                            </select></td>
                     </tr>
                     <tr>
-                        <td>ID Klienta: </td>
-                        <td><input type="number" name="idk" <?php
-                            if (isset($result['IDKlienta'])) {
-                                echo 'value="' . $result['IDKlienta'] . '"';
-                            }
-                            ?>/></td>
+                        <td>Klient: </td>
+                        <td><select name="idk">
+                                <?php
+                                echo '<option value="' . $kName['ID'] . '">' . $kName['Nazwisko'] . ' ' . $kName['Imie'] . '</option>';
+                                foreach ($getK->fetchAll() as $customer) {
+                                    echo '<option value="' . $customer['ID'] . '">' . $customer['Nazwisko'] . ' ' . $customer['Imie'] . '</option>';
+                                }
+                                ?>
+                            </select></td>
                     </tr>
                     <tr>
-                        <td>ID Sprzedawcy: </td>
-                        <td><input type="number" name="ids" <?php
-                            if (isset($result['IDSprzedawcy'])) {
-                                echo 'value="' . $result['IDSprzedawcy'] . '"';
-                            }
-                            ?>/></td>
+                        <td>Sprzedawca: </td>
+                        <td><select name="ids">
+                                <?php
+                                echo '<option value="' . $sName['ID'] . '">' . $sName['Nazwisko'] . ' ' . $sName['Imie'] . '</option>';
+                                foreach ($getS->fetchAll() as $sellers) {
+                                    echo '<option value="' . $sellers['ID'] . '">' . $sellers['Nazwisko'] . ' ' . $sellers['Imie'] . '</option>';
+                                }
+                                ?>
+                            </select></td>
                     </tr>
-                        <td><input type="submit" class="btn btn-success" value="Zapisz"></td>
+                    <td><input type="submit" class="btn btn-success" value="Zapisz"></td>
                     </tr>
                 </table>
             </form>
