@@ -13,17 +13,19 @@ if (isset($_POST['nazwa'])) {
                 . '`VAT`=:vat,'
                 . '`CenaNetto`=:cnNetto,'
                 . '`Opis`=:opis,'
-                . '`IDDostawcy`=:idDost'
+                . '`IDDostawcy`=:idDost,'
+                . '`EAN13`=:ean13'
                 . ' WHERE id=:id');
         $sth->bindParam(':id', $id);
     } else {
-        $sth = $pdo->prepare('INSERT INTO `produkty` VALUES (NULL, :nazwa, :vat, :cnNetto, :opis, :idDost)');
+        $sth = $pdo->prepare('INSERT INTO `produkty` VALUES (NULL, :nazwa, :vat, :cnNetto, :opis, :idDost,:ean13)');
     }
     $sth->bindParam(':nazwa', $_POST['nazwa']);
     $sth->bindParam(':vat', $_POST['vat']);
     $sth->bindParam(':cnNetto', $_POST['cnNetto']);
     $sth->bindParam(':opis', $_POST['opis']);
     $sth->bindParam(':idDost', intval($_POST['idDost']));
+    $sth->bindParam(':ean13', generate($_POST['ean13']));
     $sth->execute();
     header('location: ../../paneladmina.php#produkty');
 }
@@ -34,12 +36,12 @@ if ($idGet > 0) {
     $sth->execute();
 
     $result = $sth->fetch();
-    
-    $str=$pdo->prepare('SELECT * FROM `dostawcy` WHERE id=:id');
-    $str->bindParam(':id',$result['IDDostawcy']);
+
+    $str = $pdo->prepare('SELECT * FROM `dostawcy` WHERE id=:id');
+    $str->bindParam(':id', $result['IDDostawcy']);
     $str->execute();
-    
-    $DostName=$str->fetch();
+
+    $DostName = $str->fetch();
 }
 ?>
 
@@ -102,11 +104,19 @@ if ($idGet > 0) {
                         <td>Dostawca: </td>
                         <td><select name="idDost">
                                 <?php
-                                echo '<option value="' . $DostName['ID'] . '">' . $DostName['Nazwisko'].' '.$DostName['Imie'] . '</option>';
-                                 foreach ($get->fetchAll() as $provider) {
-                                    echo '<option value="' . $provider['ID'] . '">' .$provider['Nazwisko'].'  '. $provider['Imie'] . '</option>';
+                                echo '<option value="' . $DostName['ID'] . '">' . $DostName['Nazwisko'] . ' ' . $DostName['Imie'] . '</option>';
+                                foreach ($get->fetchAll() as $provider) {
+                                    echo '<option value="' . $provider['ID'] . '">' . $provider['Nazwisko'] . '  ' . $provider['Imie'] . '</option>';
                                 }
                                 ?></select></td>
+                    </tr>
+                    <tr>
+                        <td>EAN-13: </td>
+                        <td><input type="text" name="ean13" <?php
+                            if (isset($result['EAN13'])) {
+                                echo 'value="' . $result['EAN13'] . '"';
+                            }
+                            ?>/></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -117,3 +127,21 @@ if ($idGet > 0) {
         </div>
     </body>
 </html>
+<?php
+    function generate($ean13){
+        $sum=0;
+        if(strlen($ean13)==12){
+            for($i=0;$i<12;$i++){
+                if($i%2==0) $sum+= intval ($ean13[$i]);
+                else $sum+= intval ($ean13[$i])*3;
+            }
+            $sum%=10;
+            $sum=10-$sum;
+            $sum%=10;
+            return $ean13.$sum;
+        }
+        else return $ean13;
+        
+    }
+
+?>
