@@ -152,6 +152,14 @@ if ($idGet > 0) {
                         </div>
                  </div>
             </form>
+            
+            <div>
+                <canvas id="canvas"/>
+            </div>
         </div>
     </body>
 </html>
+<script>
+    
+    
+</script>

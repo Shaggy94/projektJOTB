@@ -112,7 +112,7 @@ if ($idGet > 0) {
                     </tr>
                     <tr>
                         <td>EAN-13: </td>
-                        <td><input type="text" name="ean13" <?php
+                        <td><input type="text" id="ean13" name="ean13" <?php
                             if (isset($result['EAN13'])) {
                                 echo 'value="' . $result['EAN13'] . '"';
                             }
@@ -124,6 +124,11 @@ if ($idGet > 0) {
                     </tr>
                 </table>
             </form>
+            <canvas id="myCanvas" width="200" height="100"
+style="border:1px solid #c3c3c3;">
+Your browser does not support the canvas element.
+</canvas>
+      <script src="ean13.js" type="text/javascript"></script>
         </div>
     </body>
 </html>
@@ -141,7 +146,7 @@ if ($idGet > 0) {
             return $ean13.$sum;
         }
         else return $ean13;
-        
+
     }
 
 ?>

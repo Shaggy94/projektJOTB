@@ -1,4 +1,6 @@
         <?php
+
+
         $tbl = $pdo->query('SELECT * FROM `faktury`');
         echo '<br><a href="admin/factures/add.php" class="btn btn-success" role="button">dodaj fakturę</a><br>'
         . '<table class="table table-striped">'
@@ -30,6 +32,8 @@
 			. '<th>' . $value['NIP'] . '</th>'
 			. '<th>' . $value['Kraj'] . '</th>'
             . '<th><a href="admin/factures/usun.php?id=' . $value['ID'] .
-            '" class="btn btn-danger" role="button">Usuń</a><a href="admin/factures/add.php?id=' . $value['ID'] . '" class="btn btn-info" role="button">Edytuj</a></th></tr>';
+            '" class="btn btn-danger" role="button">Usuń</a><a href="admin/factures/add.php?id=' . $value['ID'] . '" class="btn btn-info" role="button">Edytuj</a>
+            <a href="admin/factures/faktura.php?id=' . $value['ID'] .'" class="btn btn-info" role="button">Faktura</a>
+            </th></tr>';
         }
         echo '</table>';

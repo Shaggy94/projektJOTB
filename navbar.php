@@ -4,7 +4,7 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-                <span class="icon-bar"></span> 
+                <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="<?php echo $basicPath; ?>index.php">WebSiteName</a>
         </div>
@@ -20,7 +20,7 @@
                     echo '<li><a href="#"><span class="glyphicon glyphicon-user"></span> ' . $_SESSION['login'] . '</a></li>';
                 } else {
                     $session = 0;
-                    echo '<li><a href="#"><span class="glyphicon glyphicon-user"></span> Zarejestruj się</a></li>';
+                    echo '<li><a href="rejestracja.php"><span class="glyphicon glyphicon-user"></span> Zarejestruj się</a></li>';
                 }
                 ?>
                 <li><a href="#" id="login" data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-log-in"></span> Zaloguj</a>

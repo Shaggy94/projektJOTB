@@ -73,7 +73,7 @@ if ($idGet > 0) {
                 <table>
                     <tr>
                         <td>Numer faktury: </td>
-                        <td><input type="number" name="nrFakt" <?php
+                        <td><input type="number" name="nrFakt" id="nrFakt"<?php
                             if (isset($result['NumerFaktury'])) {
                                 echo 'value="' . $result['NumerFaktury'] . '"';
                             }
@@ -81,7 +81,7 @@ if ($idGet > 0) {
                     </tr>
                     <tr>
                         <td>Data wystawienia: </td>
-                        <td><input type="date" name="dataWyst" <?php
+                        <td><input type="date" name="dataWyst" id="dataWyst"<?php
                             if (isset($result['DataWystawienia'])) {
                                 echo 'value="' . $result['DataWystawienia'] . '"';
                             }
@@ -89,7 +89,7 @@ if ($idGet > 0) {
                     </tr>
                     <tr>
                         <td>Imie: </td>
-                        <td><input type="text" name="imie" <?php
+                        <td><input type="text" name="imie" id="imie"<?php
                             if (isset($result['Imie'])) {
                                 echo 'value="' . $result['Imie'] . '"';
                             }
@@ -97,7 +97,7 @@ if ($idGet > 0) {
                     </tr>
                     <tr>
                         <td>Nazwisko: </td>
-                        <td><input type="text" name="nazwisko" <?php
+                        <td><input type="text" name="nazwisko" id="nazwisko"<?php
                             if (isset($result['Nazwisko'])) {
                                 echo 'value="' . $result['Nazwisko'] . '"';
                             }
@@ -105,7 +105,7 @@ if ($idGet > 0) {
                     </tr>
                     <tr>
                         <td>Ulica: </td>
-                        <td><input type="text" name="ulica" <?php
+                        <td><input type="text" name="ulica" id="ulica"<?php
                             if (isset($result['Ulica'])) {
                                 echo 'value="' . $result['Ulica'] . '"';
                             }
@@ -134,7 +134,7 @@ if ($idGet > 0) {
                                 echo 'value="' . $result['Miasto'] . '"';
                             }
                             ?>/></td>
-                    </tr> 
+                    </tr>
                     <tr>
                         <td>NIP: </td>
                         <td><input type="text" name="nip" <?php
@@ -142,7 +142,7 @@ if ($idGet > 0) {
                                 echo 'value="' . $result['NIP'] . '"';
                             }
                             ?>/></td>
-                    </tr> 
+                    </tr>
                     <tr>
                         <td>Kraj: </td>
                         <td><input type="text" name="kraj" <?php
@@ -150,7 +150,7 @@ if ($idGet > 0) {
                                 echo 'value="' . $result['Kraj'] . '"';
                             }
                             ?>/></td>
-                    </tr> 
+                    </tr>
                     <tr>
                         <td></td>
                         <td><input type="submit" class="btn btn-success" value="Zapisz"></td>
@@ -160,4 +160,3 @@ if ($idGet > 0) {
         </div>
     </body>
 </html>
-
