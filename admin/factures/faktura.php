@@ -33,17 +33,9 @@ if ($idGet > 0) {
         <div class="container-fluid">
 
           <div id="dane">
-              Numer faktury: <?php echo $result['NumerFaktury'] ?></label><br>
-              Data wystawienia: <?php echo $result['DataWystawienia'] ?><br>
-              Imie: <?php echo $result['Imie'] ?><br>
-              Nazwisko: <?php echo $result['Nazwisko'] ?><br>
-              Ulica: <?php echo $result['Ulica'] ?><br>
-              Numer domu: <?php echo $result['NumerDomu'] ?><br>
-              Kod pocztowy: <?php echo $result['KodPocztowy'] ?><br>
-              Miasto: <?php echo $result['Miasto'] ?><br>
-              NIP: <?php echo $result['NIP'] ?><br>
-              Kraj: <?php echo $result['Kraj'] ?><br>
+            <Numerfakrury>123</Numerfakrury>
           </div>
+
           <div id="qrcode"></div>
           <script src="qr.js" type="text/javascript"></script>
     </body>

@@ -124,11 +124,6 @@ if ($idGet > 0) {
                     </tr>
                 </table>
             </form>
-            <canvas id="myCanvas" width="200" height="100"
-style="border:1px solid #c3c3c3;">
-Your browser does not support the canvas element.
-</canvas>
-      <script src="ean13.js" type="text/javascript"></script>
         </div>
     </body>
 </html>
@@ -145,6 +140,16 @@ Your browser does not support the canvas element.
             $sum%=10;
             return $ean13.$sum;
         }
+		else if(strlen($ean13)==7){
+			for($i=0;$i<7;$i++){
+                if($i%2!=0) $sum+= intval ($ean13[$i]);
+                else $sum+= intval ($ean13[$i])*3;
+            }
+            $sum%=10;
+            $sum=10-$sum;
+            $sum%=10;
+            return $ean13.$sum;
+		}
         else return $ean13;
 
     }

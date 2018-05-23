@@ -28,7 +28,9 @@ foreach ($tbl->fetchAll() as $value) {
     . '<th><a href="admin/products/usun.php?id=' . $value['ID'] .
     '" class="btn btn-danger" role="button" >Usuń</a>'
     . '<a href="admin/products/add.php?id='
-    . $value["ID"] . '" class="btn btn-info" role="button">Edytuj</a></th></tr>';
+    . $value["ID"] . '" class="btn btn-info" role="button">Edytuj</a>'
+	. '<a href="admin/products/info.php?id='
+    . $value["ID"] . '" class="btn btn-info" role="button">Info</a></th></tr>';
 }
 echo '</table>';
 ?>
