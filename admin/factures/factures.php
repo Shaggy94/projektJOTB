@@ -37,3 +37,12 @@
             </th></tr>';
         }
         echo '</table>';
+		?>
+		<hmtl>
+			<form enctype="multipart/form-data" action="admin/factures/wczytaj.php" method="POST">
+				<input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+				Wybierz plik<input name="userfile" type="file" />
+				<input type="submit" value="Wczytaj plik" />
+			</form>
+		</html>
+		

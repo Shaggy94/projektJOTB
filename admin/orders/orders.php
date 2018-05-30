@@ -30,6 +30,7 @@ foreach ($tbl->fetchAll() as $value) {
     . '<th><a href="admin/orders/usun.php?id=' . $value['ID'] .
     '" class="btn btn-danger" role="button" >Usuń</a>'
     . '<a href="admin/orders/add.php?id='
-    . $value["ID"] . '" class="btn btn-info" role="button">Edytuj</a></th></tr>';
+    . $value["ID"] . '" class="btn btn-info" role="button">Edytuj</a><a href="admin/orders/info.php?id='
+    . $value["ID"] . '" class="btn btn-info" role="button">info</a></th></tr>';
 }
 echo '</table>';
